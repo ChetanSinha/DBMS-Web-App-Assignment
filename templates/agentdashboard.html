@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Agent Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<h1>Welcome {{session.username}} Your-ID: {{session.Id}}</h1>
+<br>
+<a href="/notification">Notification</a>
+<br>
+<a href="/agent_property">Your Properties</a>
+<br>
+<a href="/sellProperty/{{session.Id}}">Add Property</a>
+<br>
+<a href="/logout">Logout</a>
+{% endblock %}
