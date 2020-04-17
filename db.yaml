@@ -1,0 +1,6 @@
+# PASSWORDS AND LOGIN DETAILS
+
+mysql_host: 'localhost'
+mysql_user: 'root'
+mysql_password: 'enterYourPassword'
+mysql_db: 'DATABASE_NAME_CREATED'
