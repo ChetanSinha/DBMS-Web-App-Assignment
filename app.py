@@ -17,13 +17,14 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
+# get today's date
 def get_date():
     date_time = datetime.now()
     lst = [date_time.strftime("%d"), date_time.strftime("%m"), date_time.strftime("%Y")]
     date = ('-').join(lst)
     return date
 
-# root.
+# root
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
@@ -164,7 +165,7 @@ def blogin():
 
     return render_template('login.html')
 
-
+# buyer dashboard
 @app.route('/buyerlogged')
 def bdashboard():
     return render_template('buyerdashboard.html')
@@ -209,7 +210,7 @@ def logout():
     session.clear()
     return redirect('/')
 
-
+# contact agent for buying
 @app.route('/contact/<string:buytype>/<int:propid>/<int:buyid>')
 def contact(buytype, propid, buyid):
     cur = mysql.connection.cursor()
@@ -223,6 +224,7 @@ def contact(buytype, propid, buyid):
     cur.close()
     return redirect('/buyerlogged')
 
+# list of properties of agent
 @app.route('/agentproperty/<int:agentid>')
 def agentproperty(agentid):
     cur = mysql.connection.cursor()
@@ -235,13 +237,13 @@ def agentproperty(agentid):
     cur.close()
     return redirect('/agentlogged')
 
-
+# confirm the request of the buyer.
 @app.route('/confirm/<int:propId>')
 def confirm(propId):
     cur = mysql.connection.cursor()
     cur.execute("SELECT availablity FROM property WHERE property_id = %s", [propId])
     available_flag = cur.fetchone()
-    
+
     # SELL 
     if available_flag == 1:
         cur.execute("UPDATE property SET availablity = %s, date_of_selling = %s WHERE property_id = %s AND buyer_id <> -1", [1, get_date(), propId])
@@ -263,6 +265,7 @@ def moreinfo(address):
 # __________________________________________________________________________________________________________________________________
 # REAL ESATATE AGENT OFFICE
 
+# check the selling and renting of the agent 
 @app.route('/reoffice')
 def reoffice():
     cur = mysql.connection.cursor()
@@ -282,7 +285,7 @@ def reoffice():
     cur.close()
     return redirect('/')
 
-
+# check the details of a particular agent
 @app.route('/sellingdetails/<string:buytype>/<int:agentid>')
 def sellingdetails(buytype, agentid):
     cur = mysql.connection.cursor()
