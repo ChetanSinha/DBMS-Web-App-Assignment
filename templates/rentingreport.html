@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Buy Property</title>
+{% endblock %}
+
+{% block body %}
+<h1>Agent Selling Record</h1>
+<div>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Date of Entry</th>
+            <th>Date of Selling</th>
+            <th>Renting Price in lacs</th>
+            <th>Buyer's Id</th>
+            <!-- <th>Actions</th> -->
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.location }}</td>
+            <td>{{ row.type }}</td>
+            <td>{{ row.size}}</td>
+            <td>{{ row.date_of_entry}}</td>
+            <td>{{row.date_of_selling}}</td>
+            <td>{{ row.renting_price }}</td>
+            <td>{{row.buyer_id}}</td>
+            <!-- <td>
+                <a href="">Give Employee of the month</a>
+            </td> -->
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

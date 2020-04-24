@@ -1,0 +1,21 @@
+<table border = 1>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    {% for user in userDetails %}
+    <tr>
+      <td> {{ user[0] }} </td>
+      <td> {{ user[1] }} </td>
+      <td> {{ user[2] }} </td>
+      <td> {{ user[3] }} </td>
+      <td>
+        <a href="/delete/{{user[0]}}">Delete</a>
+        <br>
+        <a href="/update/{{user[0]}}">Update</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>

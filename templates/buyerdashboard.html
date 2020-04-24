@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Customer Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<h1>Welcome {{session.username}} Your-ID: {{session.Id}}</h1>
+<br>
+<a href="/notification">Notifications</a>
+<br>
+<a href="/buyproperty/{{session.Id}}">View Properties</a>
+<br>
+<a href="/logout">Logout</a>
+{% endblock %}

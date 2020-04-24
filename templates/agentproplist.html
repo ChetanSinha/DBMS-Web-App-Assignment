@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Agent's Property</title>
+{% endblock %}
+
+{% block body %}
+<h1>My Property List</h1>
+<div>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <th>Property Id</th>
+            <th>location</th>
+            <th>Type</th>
+            <th>Availability type</th>
+            <th>Size</th>
+            <th>Selling Price in lacs</th>
+            <th>Renting Price in thousand</th>
+            <th>Buyer ID</th>
+            <th>Actions</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.property_id }}</td>
+            <td>{{ row.location }}</td>
+            <td>{{ row.type}}</td>
+            <td>{{ row.availablity }}</td>
+            <td>{{ row.size }}</td>
+            <td>{{ row.selling_price}}</td>
+            <td>{{ row.renting_price}}</td>
+            <td>{{row.buyer_id }}</td>
+            <td>
+                <a href="/sell/{{row.property_id}}">Sell</a>
+                <!-- <a href="/rent/{{r}}"></a> -->
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Buy Property</title>
+{% endblock %}
+
+{% block body %}
+<h1>Selling Record</h1>
+<div>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <th>Agent Id</th>
+            <th>Name</th>
+            <th>Sum of selling prices in lacs</th>
+            <th>Actions</th>
+        </tr>
+        {% for row in sell_data %}
+        <tr>
+            <td>{{ row.agent_id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.sum}}</td>
+            <td>
+                <a href="/sellingdetails/sold/{{row.agent_id}}">Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<h1>Renting Record</h1>
+<div>
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <th>Agent Id</th>
+            <th>Name</th>
+            <th>Sum of renting prices in thousand</th>
+            <th>Actions</th>
+        </tr>
+        {% for row in rent_data %}
+        <tr>
+            <td>{{ row.agent_id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.sum}}</td>
+            <td>
+                <a href="/sellingdetails/rented/{{row.agent_id}}">Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}
